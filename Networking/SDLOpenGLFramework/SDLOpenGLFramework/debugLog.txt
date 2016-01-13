@@ -1,0 +1,61 @@
+INFO: Main::Main() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\main.cpp
+ Line :: 19
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: Main started
+
+INFO: GSM::getInstance() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\gamescenemanager.cpp
+ Line :: 8
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: Checking if the _instance obj is NULL or a null address
+
+INFO: GSM::getInstance() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\gamescenemanager.cpp
+ Line :: 13
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: Reseting unique ptr adress
+
+INFO: Window::Window() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\window.cpp
+ Line :: 13
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: Window Constructor
+
+INFO: GSM::GameSceneManager() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\gamescenemanager.cpp
+ Line :: 38
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: Hello from the constructor
+
+INFO: GSM::getInstance() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\gamescenemanager.cpp
+ Line :: 17
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: returning the instance
+
+INFO: Main::GSM::Run() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\main.cpp
+ Line :: 22
+ Date :: Tue Jan 12 20:23:54 2016
+ Thread ID :: 5696
+ Message :: Thread1 id
+
+INFO: Window::SetWindowSize() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\window.cpp
+ Line :: 133
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: Setting Window Size
+
+INFO: GSM::Initialize() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\gamescenemanager.cpp
+ Line :: 57
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: checking to see if windowInstance.initialize returns false
+
+INFO: Window::Initialization() - 
+ File :: c:\users\ryan\onedrive\game programming\networking\sdlopenglframework\sdlopenglframework\window.cpp
+ Line :: 27
+ Date :: Tue Jan 12 20:23:54 2016
+ Message :: trying to initialize window
+
