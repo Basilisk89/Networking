@@ -1,6 +1,6 @@
 #include "Boy.h"
 using namespace Game_Lib;
-Boy::Boy(Rectangle r, Window* window, float _angle) :GameObject(position, _angle), boySprite(new Sprite(r, window, _angle)), windowPtr(window) {
+Boy::Boy(Vec4 r, Window* window, float _angle) :GameObject(position, _angle), boySprite(new Sprite(r, window, _angle)), windowPtr(window) {
 	position = Vec4(r.x, r.y, 0.0f, 0.0f);
 	radius = 3;
 	acceleration.y = -40.8;
@@ -30,7 +30,7 @@ void Boy::OnDestroy() {
 
 	Debug::Log(EMessageType::INFO, "Boy", "OnDestroy", __FILE__, __LINE__, "Deleting boy...");
 }
-void Boy::Render(Matrix4 projection) {
+void Boy::Render(Matrix projection) {
 	boySprite->SetAlpha(255);
 	boySprite->Render(projection);
 }

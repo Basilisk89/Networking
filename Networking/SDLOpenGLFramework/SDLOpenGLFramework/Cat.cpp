@@ -2,9 +2,9 @@
 
 using namespace Game_Lib;
 
-Cat::Cat(Rectangle r, Window* window, float _angle) :GameObject(position, _angle), catSprite(new Sprite(r, window, _angle)), windowPtr(window) {
+Cat::Cat(Vec4 r, Window* window, float _angle) :GameObject(position, _angle), catSprite(new Sprite(r, window, _angle)), windowPtr(window) {
 	position = Vec4(r.x, r.y, 0.0f, 0.0f);
-	radius = r.h / 5;
+	radius = r.z / 5;
 }
 Cat::~Cat() {
 	OnDestroy();
@@ -23,7 +23,7 @@ void Cat::OnDestroy() {
 	Debug::Log(EMessageType::INFO, "Boy", "OnDestroy", __FILE__, __LINE__, "Deleting cat...");
 }
 
-void Cat::Render(Matrix4 projection) {
+void Cat::Render(Matrix projection) {
 	catSprite->SetAlpha(255);
 	catSprite->Render(projection);
 }

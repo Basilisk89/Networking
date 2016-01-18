@@ -41,11 +41,11 @@ void StackMngr::loadIdentity() {
 	currentMatrixStack->loadIdentity();
 }
 	
-void StackMngr::loadMatrix(const Matrix4 m) {
+void StackMngr::loadMatrix(const Matrix m) {
 	currentMatrixStack->loadMatrix(m);
 }
 
-void StackMngr::multMatrix(const Matrix4 m){
+void StackMngr::multMatrix(const Matrix m){
 	currentMatrixStack->multMatrix(m);
 }
 

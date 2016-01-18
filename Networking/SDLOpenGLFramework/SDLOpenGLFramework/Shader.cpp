@@ -62,7 +62,7 @@ void Shader::handleStdUniforms(char* projectionMatrixName, char* modelViewMatrix
 	int count;
 	glGetProgramiv(shader, GL_ACTIVE_UNIFORMS, &count);
 	printf("\nThere are %d active Uniforms\n",count);
-
+	
 	/// Loop over the std uniform names and put the location of that uniform into the stdUniformLocation array
 	/// this way I can use a enum to pick the desired Uniform loc
 	for(int i=0; i < sizeof(StdUniforms); ++i){

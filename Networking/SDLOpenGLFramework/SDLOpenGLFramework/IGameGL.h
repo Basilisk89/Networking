@@ -3,17 +3,16 @@
 /// The idea is that both the MatrixStack and the StackMngr classes need the same named sunroutines 
 /// I used this "interface" in insure all the names are spelled the same and that all the Subroutines are present, 
 /// kink of Java like.
-#include "Vec3.h"
-#include "Matrix.h"
+
+#include "Matrix.h" /// Needed for the defs of Matrix and Vec3
 
 namespace  Game_Lib {
 
 class IGameGL {
-public:
 		///pure virual (abstact) Subroutines 
 		virtual void loadIdentity() = 0;
-		virtual void loadMatrix(const Matrix4 m) = 0;   
-		virtual void multMatrix(const Matrix4 m) = 0;
+		virtual void loadMatrix(const Matrix m) = 0;   
+		virtual void multMatrix(const Matrix m) = 0;
 		virtual void pushMatrix() = 0;
 		virtual void popMatrix() = 0;
 		virtual void scale(float x, float y, float z) = 0;	

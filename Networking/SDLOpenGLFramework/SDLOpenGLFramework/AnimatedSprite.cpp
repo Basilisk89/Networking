@@ -63,7 +63,7 @@ void AnimatedSprite::Draw(const DrawParams & Params) const
 	SDL_RenderCopyEx(renderer, createdTexture, NULL, &DrawRect, Params.Angle, Params.origin, Params.Flip);
 }
 
-void AnimatedSprite::Animate(const DrawParams & Params, int frameCount, Matrix4 projection)
+void AnimatedSprite::Animate(const DrawParams & Params, int frameCount, Matrix projection)
 {
 	SDL_Rect ClipRect = {
 		(Params.x + ((-Width / frameCount) * (Params.scale - 1.0f) * 0.5f)),
@@ -125,7 +125,7 @@ int AnimatedSprite::GetWidth() const
 	return Width;
 }
 
-void AnimatedSprite::Animate(int x, int y, float scale, SDL_Rect * Clip, double Angle, bool Center, SDL_RendererFlip Flip, int frameCount, Matrix4 projection)
+void AnimatedSprite::Animate(int x, int y, float scale, SDL_Rect * Clip, double Angle, bool Center, SDL_RendererFlip Flip, int frameCount, Matrix projection)
 {
 	DrawParams Params = DrawParams{ x, y, scale, Clip, Angle, SetOrigin(Center, Clip), Flip };
 	AccuFrame++;

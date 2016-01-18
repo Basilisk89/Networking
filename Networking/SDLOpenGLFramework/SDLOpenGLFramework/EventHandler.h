@@ -1,7 +1,6 @@
 #ifndef EventManager_H
 #define EventManager_H
 #include "Event.h"
-#include <SDL.h>
 namespace Game_Lib {
 	class EventHandler :public Event {
 	public:

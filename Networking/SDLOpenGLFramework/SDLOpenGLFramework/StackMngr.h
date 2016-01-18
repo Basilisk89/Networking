@@ -1,6 +1,6 @@
 #pragma once
 #include <glew.h>
-#include <glut.h>
+#include <gl/gl.h>
 
 #include "Shader.h"
 #include "Matrix.h"
@@ -33,8 +33,8 @@ namespace Game_Lib {
 		void matrixMode(StdMatricies whichMatrix);
 
 		void loadIdentity() ;
-		void loadMatrix(const Matrix4 m) ;   
-		void multMatrix(const Matrix4 m);
+		void loadMatrix(const Matrix m) ;   
+		void multMatrix(const Matrix m);
 		void pushMatrix();
 		void popMatrix();
 		void scale(float x, float y, float z);	

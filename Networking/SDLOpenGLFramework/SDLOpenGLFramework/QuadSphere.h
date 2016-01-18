@@ -3,9 +3,9 @@
 /// If I push the square verts a radius away from the center of the cube, the thing will look like a ball, easy. 
 #include "VMath.h"
 #include <glew.h>
-#include <glut.h>
 
-using namespace GAME_Lib;
+
+using namespace Game_Lib;
 
 class QuadSphere {
 private:

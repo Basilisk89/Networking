@@ -84,6 +84,11 @@ QuadSphere::QuadSphere(int numSubDivisions){
 	/// same as above but it starts at the end of the "points" array  + the "normal" array in bytes (pointed to by the addr of a temp stack variable)
 }
 
+QuadSphere::~QuadSphere()
+{
+	delete vertex, delete normals, delete texCoords;
+}
+
 
 ///  loadFace generates one quad for each face and assigns colors to the vertices
 void QuadSphere::loadFace(const Vec4& a, const Vec4& b, const Vec4& c, const Vec4& d){

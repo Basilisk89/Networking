@@ -6,11 +6,11 @@
 namespace Game_Lib {
 	class Boy : public GameObject {
 	public:
-		explicit Boy(const Rectangle r, Window* window, float _angle);
+		explicit Boy(const Vec4 r, Window* window, float _angle);
 		virtual ~Boy();
 		virtual bool OnCreate(std::string filename);
 		virtual void OnDestroy();
-		virtual void Render(Matrix4 projection);
+		virtual void Render(Matrix projection);
 		virtual void Update(float deltaTime);
 		virtual void LeftFlip() const;
 		virtual void RightFlip() const;

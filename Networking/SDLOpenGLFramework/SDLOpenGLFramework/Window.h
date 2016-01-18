@@ -1,10 +1,13 @@
 #ifndef WINDOW_H
 #define WINDOW_H
-
-#include <SDL.h>
-#include <SDL_mixer.h>
+#include "Debug.h"
 #include <glew.h>
-#include <glut.h>
+#include <GL/gl.h>
+#include <SDL.h>
+enum WindowType : unsigned int {
+	SDLWindow = 0,
+	OpenGLWINDOW = 1
+};
 namespace Game_Lib {
 	class Window {
 	public:
@@ -16,22 +19,16 @@ namespace Game_Lib {
 		~Window();
 		bool Initialize();
 		void Shutdown();
-		void ClearRenderer() const;
 		void SetWindowSize(const int Width_, const int Height_);
 		void ToggleFullScreen();
-		SDL_Renderer* GetRenderer() const;
-		SDL_Surface* getSurface() const;
 		SDL_Window* getWindow() const;
 		SDL_Rect getRect();
 		int GetWidth() const;
 		int GetHeight() const;
-		SDL_GLContext SDLGLContext;
 	protected:
 	private:
 		SDL_Window* SDLWindow;
-		SDL_Renderer* SDLRenderer;
-		SDL_Surface* SDLSurface;
-	
+		SDL_GLContext glContext;
 		int Width;
 		int Height;
 		SDL_Rect winRect;

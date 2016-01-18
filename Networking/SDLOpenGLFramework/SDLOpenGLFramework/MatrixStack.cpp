@@ -5,7 +5,7 @@ using namespace Game_Lib;
 
 MatrixStack::MatrixStack(int _stackDepth) {
 	stackDepth = _stackDepth;
-	stack = new Matrix4[stackDepth];
+	stack = new Matrix[stackDepth];
 	stackPointer = 0;
 	stack[0].loadIdentity();
 }
@@ -39,11 +39,11 @@ void MatrixStack::loadIdentity() {
 	stack[stackPointer].loadIdentity();
 }
 		
-void MatrixStack::loadMatrix(const Matrix4 m) { 
+void MatrixStack::loadMatrix(const Matrix m) { 
 	stack[stackPointer] = m;
 }   
             
-void MatrixStack::multMatrix(const Matrix4 m) {
+void MatrixStack::multMatrix(const Matrix m) {
 	stack[stackPointer] = m * stack[stackPointer];
 }
                  				
@@ -52,17 +52,17 @@ void MatrixStack::multMatrix(const Matrix4 m) {
 			
 		
 void MatrixStack::scale(float x, float y, float z) {
-	stack[stackPointer] *= MMath::scale4x4(x,y,z);
+	stack[stackPointer] *= MMath::scale(x,y,z);
 }
 			
 			
 void MatrixStack::translate(float x, float y, float z) {
-	stack[stackPointer] *= MMath::translate4x4(x,y,z);
+	stack[stackPointer] *= MMath::translate(x,y,z);
 }
 			
 		
 void MatrixStack::rotate(float angle, float x, float y, float z) {
-	stack[stackPointer] *= MMath::rotate4x4(angle,x,y,z);
+	stack[stackPointer] *= MMath::rotate(angle,x,y,z);
 }
 
 void MatrixStack::perspective( const float fovy, const float aspect,const float zNear, const float zFar) {

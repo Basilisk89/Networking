@@ -1,10 +1,10 @@
 #include "Sprite.h"
 using namespace Game_Lib;
-Game_Lib::Sprite::Sprite(Rectangle & r, Window* windowptr, float _angle) :Texture(), retangle(new SDL_Rect()), windowInstance(windowptr), flip(), angle(_angle) {
+Game_Lib::Sprite::Sprite(Vec4  r, Window* windowptr, float _angle) :Texture(), retangle(new SDL_Rect()), windowInstance(windowptr), flip(), angle(_angle) {
 	position = Vec4(r.x, r.y, 0, 0);
 	retangle->x = position.x;
 	retangle->y = position.y;
-	retangle->h = r.h;
+	retangle->h = r.z;
 	retangle->w = r.w;
 	Debug::Log(EMessageType::INFO, "Sprite", "Sprite", __FILE__, __LINE__, "Sprite Created");
 }
@@ -15,18 +15,18 @@ void Sprite::Load(const std::string& filename) {
 	// Load the Texture from the image in the sprite
 	image = ImageLoader::ImgLoader(filename.c_str(), windowInstance->getWindow());
 	SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_ADD);
-	texture = ImageLoader::TextureLoader(image, windowInstance->GetRenderer());
+//	texture = ImageLoader::TextureLoader(image, windowInstance->GetRenderer());
 	Debug::Log(EMessageType::INFO, "Sprite", "Load", __FILE__, __LINE__, "Sprite Loaded");
 }
 
-void Sprite::Render(Matrix4 projection) {
+void Sprite::Render(Matrix projection) {
 	try {
 		if (projection != NULL) {
 			 projectedVector = projection * position;
 			if (projectedVector != NULL) {
 				retangle->x = projectedVector.x;
 				retangle->y = projectedVector.y;
-				SDL_RenderCopyEx(windowInstance->GetRenderer(), texture, NULL, retangle, angle, NULL, flip);
+	//			SDL_RenderCopyEx(windowInstance->GetRenderer(), texture, NULL, retangle, angle, NULL, flip);
 			}
 			else {}
 		}

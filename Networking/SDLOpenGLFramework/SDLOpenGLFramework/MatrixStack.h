@@ -10,13 +10,13 @@ class MatrixStack: public IGameGL {
 	protected:
 		int	stackDepth;  /// Default is 32
 		int	stackPointer;
-			Matrix4 *stack;
+		Matrix	*stack;
 	public:
 		MatrixStack(int _stackDepth = 32);
 		~MatrixStack() ;
 		void loadIdentity() ;
-		void loadMatrix(const Matrix4 m) ;   
-		void multMatrix(const Matrix4 m);
+		void loadMatrix(const Matrix m) ;   
+		void multMatrix(const Matrix m);
 		void pushMatrix();
 		void popMatrix() ;
 		void scale(float x, float y, float z);	

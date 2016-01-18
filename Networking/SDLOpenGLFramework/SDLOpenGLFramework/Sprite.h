@@ -1,16 +1,16 @@
 #ifndef Sprite_h
 #define Sprite_h
 #include "Texture.h"
-#include "Vec3.h"
+#include "Vector.h"
 #include "MMath.h"
 #include "GameObject.h"
 namespace Game_Lib {
 	class Sprite :public Texture {
 	public:
-		Sprite(Rectangle &r, Window* windowPtr, float _angle);
+		Sprite(Vec4 r, Window* windowPtr, float _angle);
 		~Sprite();
 		void Load(const std::string & filename);
-		void Render(Matrix4 projection);
+		void Render(Matrix projection);
 		void SetAlpha(const Uint8 A);
 		void LeftFlip();
 		void RightFlip();

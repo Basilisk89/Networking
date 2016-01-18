@@ -1,6 +1,6 @@
 #ifndef Mouse_H
 #define Mouse_H
-#include "Vec3.h"
+#include "Vector.h"
 #include <SDL.h>
 #include "Debug.h"
 namespace Game_Lib {

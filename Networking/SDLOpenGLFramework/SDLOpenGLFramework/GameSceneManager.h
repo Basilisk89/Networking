@@ -9,8 +9,7 @@ A thread of execution is a sequence of instructions that can be executed concurr
 An initialized thread object represents an active thread of execution; Such a thread object is joinable, and has a unique thread id.*/
 #include <thread>
 #include "SplashScreenScene.h"
-#include "SceneGame.h"
-#include "LoadScene.h"
+
 namespace Game_Lib {
 	//is running boolean
 	static bool isRunning;
@@ -60,6 +59,7 @@ namespace Game_Lib {
 		void DeleteInstance();
 		//Render function
 		void Render();
+		void HandleEvents();
 		void SwitchScene(const int index);
 	};
 }

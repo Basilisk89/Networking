@@ -18,7 +18,7 @@ bool Music::Remove() {
 	//Free the Music obj
 
 	music = nullptr;
-	delete music;
+//	delete music;
 	Debug::Log(EMessageType::INFO, "Music", "Remove", __FILE__, __LINE__, "Music Removed");
 	return true;
 }

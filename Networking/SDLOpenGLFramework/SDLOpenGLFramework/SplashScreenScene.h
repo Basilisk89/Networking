@@ -1,8 +1,11 @@
 #ifndef SPLASHSCREENSCENE_H
 #define SPLASHSCREENSCENE_H
 #include "SceneBase.h"
-#include "Boy.h"
-
+#include "MusicPlayer.h"
+#include "Shader.h"
+#include "QuadSphere.h"
+#include "Camera.h"
+#include "LoadCubeMapRAW.h"
 namespace Game_Lib {
 	class SplashScreenScene : public SceneBase {
 	public:
@@ -18,16 +21,16 @@ namespace Game_Lib {
 		virtual void Render() const;
 		virtual bool IsFinished() const;
 		MusicPlayer musicplayer;
-		KeyboardManager keyboard;
-		MouseManager mouse;
-		EventHandler eventhandler;
-		Camera camera;
-		Matrix4 ndc, ortho, projection;
-		Sprite* bg;
-		SDL_Event SDLevent;
-		Collision c;
-		std::vector<GameObject*> Flys;
-		std::unique_ptr<GameObject> boy;
+	
+		virtual void HandleEvents(const SDL_Event &SDLEvent);
+	private:
+		Shader* shader;
+		QuadSphere* sphere;
+		Camera* camera;
+		GLuint timeParam;
+		
+		GLuint noiseTex;
+		float t;
 	};
 }
 #endif 

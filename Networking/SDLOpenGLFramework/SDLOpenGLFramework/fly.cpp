@@ -1,7 +1,7 @@
 #include "fly.h"
 
 using namespace Game_Lib;
-fly::fly(Rectangle r, Window * window, float _angle) :GameObject(position, _angle), flySprite(new Sprite(r, window, _angle)), windowPtr(window) {
+fly::fly(Vec4 r, Window * window, float _angle) :GameObject(position, _angle), flySprite(new Sprite(r, window, _angle)), windowPtr(window) {
 	position.x = r.x;
 	position.y = r.y;
 	radius =1;
@@ -25,7 +25,7 @@ void fly::OnDestroy() {
 	Debug::Log(EMessageType::INFO, "fly", "Ondestroy", __FILE__, __LINE__, "fly Killed");
 }
 
-void fly::Render(Matrix4 projection) {
+void fly::Render(Matrix projection) {
 	flySprite->Render(projection);
 }
 

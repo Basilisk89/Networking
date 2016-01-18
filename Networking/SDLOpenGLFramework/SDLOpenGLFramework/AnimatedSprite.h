@@ -41,11 +41,11 @@ namespace Game_Lib {
 		void SetColor(const Uint8 r, const Uint8 g, const Uint8 b, const Uint8 a);
 		int GetHeight() const;
 		int GetWidth() const;
-		void Animate(int x, int y, float scale, SDL_Rect* Clip, double Angle, bool Center, SDL_RendererFlip Flip, int frameCount, Matrix4 projection);
+		void Animate(int x, int y, float scale, SDL_Rect* Clip, double Angle, bool Center, SDL_RendererFlip Flip, int frameCount, Matrix projection);
 		Vec4 position;
 	private:
 		void Draw(const DrawParams& Params) const;
-		void Animate(const DrawParams& Params, int frameCount, Matrix4 projection);
+		void Animate(const DrawParams& Params, int frameCount, Matrix projection);
 		SDL_Rect DrawRect;
 		SDL_Point* SetOrigin(bool center, SDL_Rect* Clip);
 		SDL_Texture* createdTexture;

@@ -23,7 +23,7 @@ void Collision::Collision2D(GameObject* boy, GameObject* cat)
 		float StandDistance = sqrt((vector.x * vector.x) + (vector.y * vector.y) + (vector.z + vector.z));
 
 		Normal = vector;
-		float normal = VMath::Normalize(Normal);
+		Vec4 normal = VMath::normalize(Normal);
 
 		float damp = 2.0;
 		Vec4 vector2;
@@ -39,11 +39,11 @@ void Collision::Collision2D(GameObject* boy, GameObject* cat)
 		//newvector1 = ((ball1->mass - e*ball2->mass)*vector1 + (1+e) *ball2->mass*vector2)/(ball1->mass+ball2->mass);
 		//newvector2 = ((ball2->mass - e*ball1->mass)*vector2 + (1+e) *ball1->mass*vector1)/(ball1->mass+ball2->mass);
 
-		boy->velocity += 2 * (vector1 - vector1) * vector;
-		cat->velocity += 2 * (vector2 - vector2) * vector;
+		//boy->velocity += 2 * (vector1 - vector1) * vector;
+	//	cat->velocity += 2 * (vector2 - vector2) * vector;
 
 		float touchingDistance = 1;
-		float offset = 0.5f * (touchingDistance - normal);
+		float offset = 0.5f * (touchingDistance - normal.x);
 		std::cout << cat->position << boy->position << std::endl;
 		boy->velocity += vector;
 		cat->velocity -= vector;

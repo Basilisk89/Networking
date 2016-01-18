@@ -12,6 +12,6 @@ void Texture::Remove() {
 	image = nullptr;
 	texture = nullptr;
 	delete image;
-	delete texture;
+//	delete texture;
 	Debug::Log(EMessageType::INFO, "Texture", "Remove", __FILE__, __LINE__, "Deleting");
 }

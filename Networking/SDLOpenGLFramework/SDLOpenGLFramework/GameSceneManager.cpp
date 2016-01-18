@@ -53,63 +53,42 @@ void GameSceneManager::Thread() {  /// Just a threading demo
 bool GameSceneManager::Initialize() {
 	Debug::Log(EMessageType::INFO, "GSM", "Initialize", __FILE__, __LINE__, "setting windowSize of 1100 , 768");
 	// set GSMs windowInstance windows sizw to 1000, 768 the size of the limbo picture
-	windowInstance.SetWindowSize(800, 600);
+	windowInstance.SetWindowSize(1280, 720);
 	Debug::Log(EMessageType::INFO, "GSM", "Initialize", __FILE__, __LINE__, "checking to see if windowInstance.initialize returns false");
 	// if Initialize returns false
-	if (!windowInstance.Initialize()) {
-		Debug::Log(EMessageType::ERROR, "GSM", "Initialize", __FILE__, __LINE__, "Failed to initialize windowInstance");
-		// return false for GSM initialize
-		return false;
-	}
+    windowInstance.Initialize();
+
 	currentScene = new SplashScreenScene(windowInstance);
-	if (currentScene != nullptr) {
-		bool create = currentScene->OnCreate();
-		return true;
-	}
+	
+	Debug::Log(EMessageType::INFO, "GSM", "Initialize", __FILE__, __LINE__, "instantiating scene");
+		 currentScene->OnCreate();
+		
+		 return true;
 }
 
 void GameSceneManager::Run() {
 	isRunning = Initialize();
-	bool scenefinish = currentScene->IsFinished();
-	SDL_Event quit;
-	quit = SDL_Event();
-	if (quit.type == SDL_QUIT) {
-	}
+	
 	Timer timer;
 	timer.Start();
-	while (isRunning && SDL_PushEvent(&quit)) {
+	while (isRunning) {
 		timer.UpdateFrameTicks();
+		HandleEvents();
 		Update(timer.GetDeltaTime());
+	
 		Render();
 		SDL_Delay(timer.GetSleepTime(fps));
-		if (currentScene->IsFinished()) {
-			if (currentScene->sceneIndex == 1) {
-				SwitchScene(2);
-			}
-		}if (currentScene->IsFinished()) {
-			if (currentScene->sceneIndex == 2) {
-				SwitchScene(1);
-			}
-		}if (currentScene->IsFinished()) {
-			if (currentScene->sceneIndex == 3) {
-				SwitchScene(2);
-			}
-		}
 
-		if (quit.type == SDL_QUIT) {
-			delete currentScene;
-			currentScene = nullptr;
-		}
 	}
 }
 void GameSceneManager::Render() {
-	windowInstance.ClearRenderer();
+//	windowInstance.ClearRenderer();
 	if (currentScene == nullptr) {
 		std::cout << "No scene selected as current scene" << std::endl;
 		assert(currentScene);
 	}
 	currentScene->Render();
-	SDL_RenderPresent(windowInstance.GetRenderer());
+//	SDL_RenderPresent(windowInstance.GetRenderer());
 }
 void GameSceneManager::Update(const float deltaTime) {
 	if (currentScene) currentScene->Update(deltaTime);
@@ -124,22 +103,24 @@ void GameSceneManager::SwitchScene(const int index) {
 			Debug::Log(EMessageType::INFO, "GSM", "SwitchScene", __FILE__, __LINE__, "Scene Swapped");
 		}
 	}
-	if (index == 1) {
-		delete currentScene;
-		currentScene = nullptr;
-		if (currentScene == nullptr) {
-			currentScene = new SceneGame(windowInstance);
-			currentScene->OnCreate();
-			Debug::Log(EMessageType::INFO, "GSM", "SwitchScene", __FILE__, __LINE__, "Scene Swapped");
-		}
-	}
-	if (index == 2) {
-		delete currentScene;
-		currentScene = nullptr;
-		if (currentScene == nullptr) {
-			currentScene = new LoadScene(windowInstance);
-			currentScene->OnCreate();
-			Debug::Log(EMessageType::INFO, "GSM", "SwitchScene", __FILE__, __LINE__, "Scene Swapped");
+}
+
+void GameSceneManager::HandleEvents() {
+	SDL_Event SDLEvent;
+
+	while (SDL_PollEvent(&SDLEvent)) {
+		switch (SDLEvent.type) {
+		case SDL_EventType::SDL_QUIT:
+			isRunning = false;
+			return;
+		case SDL_EventType::SDL_MOUSEBUTTONDOWN:
+		case SDL_EventType::SDL_MOUSEBUTTONUP:
+		case SDL_EventType::SDL_MOUSEMOTION:
+			assert(currentScene);
+			currentScene->HandleEvents(SDLEvent);
+			break;
+		default:
+			break;
 		}
 	}
 }
